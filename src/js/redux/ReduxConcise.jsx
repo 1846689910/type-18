@@ -22,7 +22,7 @@ const Counter = (props) => {
     );
 };
 const Messenger = ({store}) => (<div>
-    
+    <input type="text" disabled/><button className="btn btn-primary">fetch</button>
 </div>);
 export default class ReduxConcise extends React.Component {
     constructor(props){

@@ -13,7 +13,8 @@ const initialState = {
         { name: "task3", status: "active" },
         { name: "task4", status: "completed" }
     ],
-    filterText: ActionTypes.SHOW_ALL // "SHOW_COMPLETED", "SHOW_ACTIVE"
+    filterText: ActionTypes.SHOW_ALL, // "SHOW_COMPLETED", "SHOW_ACTIVE"
+    message: ""
 };
 const valueHandler = (value = initialState.value, action) => {
     switch (action.type) {
@@ -46,6 +47,7 @@ const filterTextHandler = (filterText = initialState.filterText, action) => {
 const tasksHandler = (tasks = initialState.tasks, action) => {
     return tasks;
 };
+const message = (message = initialState.message, action) => {}
 /**
  * Reducer所接收的函数都是纯函数pure function, 一个input 对应一个确定的返回值
  * 	    1 不能修改参数
