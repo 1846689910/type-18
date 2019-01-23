@@ -21,6 +21,9 @@ const Counter = (props) => {
         </div>
     );
 };
+const Messenger = ({store}) => (<div>
+    
+</div>);
 export default class ReduxConcise extends React.Component {
     constructor(props){
         super(props);
