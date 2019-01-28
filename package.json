@@ -47,7 +47,6 @@
     "inert": "^5.1.2",
     "jest": "^23.6.0",
     "jquery": "^3.3.1",
-    "jquery-ui": "^1.12.1",
     "jsonpath": "^1.0.0",
     "koa-body": "^4.0.6",
     "koa-router": "^7.4.0",
