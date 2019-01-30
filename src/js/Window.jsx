@@ -6,6 +6,7 @@ import {tileToBBox, pointToTileFraction, googleToTile} from "global-mercator";
 import {ActionWatcher} from "./utils";
 import {TopComp, TopComp1} from "./context/ContextShow";
 import {ValidationWrapper} from "./ValidationTemp";
+import custom from "../css/main.css";
 export class Window extends React.Component{
     constructor(props){
         super(props);
@@ -71,7 +72,7 @@ export class Window extends React.Component{
         this.fn().then(res => console.log(res));
         return (
             <div ref={r => this.div = r}>
-                <h1 style={{display: this.state.showHeader ? "block" : "none"}}>Hello</h1>
+                <h1 styleName="custom.aaa" style={{display: this.state.showHeader ? "block" : "none"}}>Hello</h1>
                 <button className="btn btn-success" onClick={this.clickHandler}>toggle header</button>
                 <button className="fa fa-mail-forward" aria-hidden="true"/>
                 <div className="div1">
