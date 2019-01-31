@@ -3,7 +3,6 @@
     "plugins": [
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         "@babel/plugin-syntax-dynamic-import",
-        "transform-class-properties",
-        ["react-css-modules", { "webpackHotModuleReloading": true, "generateScopedName": "[path]___[name]__[local]___[hash:base64:5]" }]
+        "transform-class-properties"
     ]
 }

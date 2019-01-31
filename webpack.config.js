@@ -58,7 +58,9 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
                     loader: "babel-loader",
                     options: {
                         cacheDirectory: true,
-                        plugins: ['babel-plugin-react-css-modules']
+                        plugins: [
+                            ["react-css-modules", { webpackHotModuleReloading: true, generateScopedName: `${env.production ? "" : "[name]__[local]___"}[hash:base64:5]` }]
+                        ]
                     }
                 }
             },{
@@ -75,7 +77,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
                     loader: 'css-loader',
                     options: {
                       modules: true,
-                      localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+                      localIdentName: `${env.production ? "" : "[name]__[local]___"}[hash:base64:5]`, //在npm run prod时文档的class会进一步缩减
                     },
                   },
                   { loader: "sass-loader" }
