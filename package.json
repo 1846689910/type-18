@@ -15,6 +15,9 @@
     "jests": "node ./node_modules/jest/bin/jest test/jests",
     "integration-tests": "node ./node_modules/mocha/bin/mocha integrationTest"
   },
+  "bin": {
+    "hello-cli": "./clis/hello.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
