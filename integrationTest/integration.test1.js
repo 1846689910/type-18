@@ -31,3 +31,12 @@ describe("Google homepage", function(){
         driver.quit();
     });
 });
+/**
+ * Potential issue :
+ * 1 Session not created
+ *  try solution:
+ *      1 check you machine `localhost` reference, like MAC OS: `sudo vi /etc/hosts`, `127.0.0.1 localhost`
+ * 2 chromedriver version and chrome version match:
+ *  try solution:
+ *      1 check `http://chromedriver.chromium.org/downloads`
+ */
