@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {increase, decrease, fetchData} from "../settings/actions";
 import {Link} from "react-router-dom";
@@ -24,10 +26,18 @@ const CounterPC = (props) => {
         </div>
     );
 };
+CounterPC.propTypes = {
+    dispatch: PropTypes.function,
+    value: PropTypes.number
+};
 const MessengerPC = ({dispatch, message}) => (<div style={{textAlign: "center"}}>
     <input type="text" disabled value={message}/>
     <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => dispatch(fetchData())}>fetch</button>
-</div>); 
+</div>);
+MessengerPC.propTypes = {
+    dispatch: PropTypes.function,
+    message: PropTypes.string
+};
 /**
  * mapStateToProps: 建立state到内部pc组件的联系，使得内部PC组件可以拿到更新的state和props
  * */
@@ -58,7 +68,7 @@ const mapDispatchToProps2 = {
     decrease: () => decrease(),
     fetchData: () => fetchData()
 };
-/** 
+/**
  * 写法3： 基本同写法1，更简化(推荐).但是发送事件需要具体实现，如dispath(Action(ActionType.INCREASE))
  */
 const mapDispatchToProps3 = (dispatch, props) => ({ dispatch });
@@ -74,7 +84,7 @@ const CounterCC = connect(
 
 const Messenger = connect(
     mapStateToProps,
-    (dispatch, props) => ({dispatch}) 
+    (dispatch, props) => ({dispatch})
 )(MessengerPC);
 
 const ReactReduxConcise = props => {
@@ -86,6 +96,9 @@ const ReactReduxConcise = props => {
             <Messenger/>
         </div>
     );
+};
+ReactReduxConcise.propTypes = {
+    route: PropTypes.object
 };
 
 export default ReactReduxConcise;

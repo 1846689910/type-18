@@ -6,9 +6,9 @@ import {tileToBBox, pointToTileFraction, googleToTile} from "global-mercator";
 import {ActionWatcher} from "./utils";
 import {TopComp, TopComp1} from "../context/ContextShow";
 import {ValidationWrapper} from "./ValidationTemp";
-import custom from "../../css/main.css";
-import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import fontawesome from "font-awesome/css/font-awesome.min.css"
+import custom from "../../css/main.css";  // eslint-disable-line
+import bootstrap from "bootstrap/dist/css/bootstrap.min.css";  // eslint-disable-line
+import fontawesome from "font-awesome/css/font-awesome.min.css";  // eslint-disable-line
 export class Window extends React.Component{
     constructor(props){
         super(props);
@@ -47,7 +47,7 @@ export class Window extends React.Component{
      * @returns: array[array[lng, lat], zoom]
      */
     tileXYZ2lngLatZoom = (XYZ) => {
-        const [minLng, minLat, maxLng, maxLat] = tileToBBox(XYZ);
+        const [minLng, minLat, maxLng, maxLat] = tileToBBox(XYZ);  // eslint-disable-line
         return [[minLng, maxLat], XYZ[2]];
     };
     /**

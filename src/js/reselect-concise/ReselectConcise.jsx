@@ -1,7 +1,9 @@
-import React from 'react';
-import {createSelector} from  'reselect';
+/* eslint-disable no-unused-vars */
+import React from "react";
+import PropTypes from "prop-types";
+import {createSelector} from  "reselect";
 import { connect } from "react-redux";
-import { showAll, showActive, showCompleted, ActionTypes, fetchData } from '../settings/actions';
+import { showAll, showActive, showCompleted, ActionTypes, fetchData } from "../settings/actions";
 import {Link} from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 
@@ -13,7 +15,7 @@ import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
  3. Selectors are composable. They can be used as input to other selectors.
  * */
 const getVisibleTasks = state => {  // 根据sotre中的state.filterText的变化来决定我们要看的tasks的子集
-    switch(state.filterText){
+    switch (state.filterText){
         case ActionTypes.SHOW_ALL:
             return state.tasks;
         case ActionTypes.SHOW_COMPLETED:
@@ -58,10 +60,17 @@ const VisibleTasksPC = props => {
         </div>
     </div>);
 };
+VisibleTasksPC.propTypes = {
+    tasks: PropTypes.array
+};
 const MessengerPC = ({dispatch, message}) => (<div style={{textAlign: "center"}}>
     <input type="text" disabled value={message}/>
     <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => dispatch(fetchData())}>fetch</button>
 </div>);
+MessengerPC.propTypes = {
+    dispatch: PropTypes.function,
+    message: PropTypes.string
+};
 /**
  * Reselect 的用法1:
  * 在mapStateToProps中直接使用  myState: getMyState(state.aaa, state.bbb, ...)
@@ -91,7 +100,7 @@ const mapStateToProps2 = () => ((state, props) => ({
 }));
 const mapStateToProps2_1 = () => ((state, props) => ({
     message: messageSelector()(state, props)
-}))
+}));
 
 const mapDispatchToProps = (dispatch, props) => ({
     showAll: () => dispatch(showAll()),
@@ -118,6 +127,6 @@ const ReselectConcise = props => {
         <VisibleTasksCC/>
         <hr/>
         <Messenger/>
-    </div>)
+    </div>);
 };
 export default ReselectConcise;

@@ -3,14 +3,12 @@ import {Link} from "react-router-dom";
 import {Window} from "./Window";
 import {app} from "./Container";
 import {People} from "./People";
-import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
+import bootstrap from "bootstrap/dist/css/bootstrap.min.css";  // eslint-disable-line
 
 console.log(People);
-const StatelessComp = props => {
-    return (<div></div>);
-};
+const StatelessComp = () => <div/>;
 class StatedComp extends React.Component{
-    constructor(props){super(props)}
+    constructor(props){super(props);}
     render(){
         return (<div></div>);
     }
@@ -34,9 +32,9 @@ export default class Main extends React.Component{
     render(){
         return (
             <div>
-                <Window ref={r => this[`_windowComp`] = r}/>
+                <Window ref={r => this["_windowComp"] = r}/>
                 <StatelessComp/>
-                <StatedComp ref={r => this[`_statedComp`] = r}/>
+                <StatedComp ref={r => this["_statedComp"] = r}/>
                 <div style={{display: "flex", justifyContent: "flex-start"}}>
                     <Link to="/redux"><button styleName="bootstrap.btn bootstrap.btn-primary">to /redux</button></Link>
                     <Link to="/react-redux"><button styleName="bootstrap.btn bootstrap.btn-primary">to /react-redux</button></Link>

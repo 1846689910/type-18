@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
  * 在build bundle.js时，清理原有的文件
  * */
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const webpack = require('webpack');
+const webpack = require("webpack");
 const path = require("path");
 const preloadedFiles = require("./preloaded-files")(__dirname);
 module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123传入参数就可以在这里用env.xxx获取到. config要改成module.exports=env=>object
@@ -21,7 +21,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
         path: `${__dirname}/dist`,  // packed file directory
         filename: env.production ? "bundle.[contenthash].js" : "bundle.[hash].js"  // name of packed file
     },
-    devtool: 'eval-source-map',
+    devtool: "eval-source-map",
     devServer: {
         contentBase: path.resolve(__dirname, "./dist"),  // 默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录
         historyApiFallback: true,  // 在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
@@ -29,9 +29,9 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
         port: 8080  // 设置默认监听端口，如果省略，默认为”8080“
     },
     optimization: {
-        runtimeChunk: 'single',
+        runtimeChunk: "single",
         splitChunks: {
-            chunks: 'all',  // split code in app and node_modules into bundle and vendor.bundle.js
+            chunks: "all",  // split code in app and node_modules into bundle and vendor.bundle.js
             maxInitialRequests: Infinity,
             minSize: 0,
             cacheGroups: {  // keep splitting the node_modules chunks
@@ -43,7 +43,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
                         const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
 
                         // npm package names are URL-safe, but some servers don't like @ symbols
-                        return `npm.${packageName.replace('@', '')}`;
+                        return `npm.${packageName.replace("@", "")}`;
                     },
                 },
             },
@@ -72,9 +72,9 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
             },{
                 test: /\.(css|scss)$/,  // 之后就可以在js中直接import ".../xxx.scss"文件作为css的替代品
                 use: [
-                  { loader: 'style-loader' },
+                  { loader: "style-loader" },
                   {
-                    loader: 'css-loader',
+                    loader: "css-loader",
                     options: {
                       modules: true,
                       localIdentName: `${env.production ? "" : "[name]__[local]___"}[hash:base64:5]`, //在npm run prod时文档的class会进一步缩减
@@ -89,7 +89,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
                     // loader: 'file-loader',  // 如果项目中对路径要求严格，此处也可用file-loader来显式地将文件添加至dist中
                     options: {
                         emitFile: true,
-                        name: './images/[name].[ext]', // 这个相对路径是基于`${__dirname}/dist/...`
+                        name: "./images/[name].[ext]", // 这个相对路径是基于`${__dirname}/dist/...`
                     }
                 }]
             },{
@@ -98,21 +98,21 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
                     loader: "file-loader",
                     options: {
                         emitFile: true,
-                        name: './[name].[ext]', // 这个相对路径是基于`${__dirname}/dist/...`
+                        name: "./[name].[ext]", // 这个相对路径是基于`${__dirname}/dist/...`
                     }
                 }]
             },{
                 test: /\.(woff|woff2|eot|ttf|svg)(\?v=.*)?$/,
                 use: [{
-                    loader: 'url-loader?limit=100000',
+                    loader: "url-loader?limit=100000",
                     // loader: "file-loader",
                     options: {
-                        name: `./fonts/[name].[ext]`
+                        name: "./fonts/[name].[ext]"
                     }
                 }]
             },{
                 test: /\.(tsx|ts)?$/,
-                use: 'ts-loader',
+                use: "ts-loader",
                 exclude: /node_modules/
             }
         ]
@@ -135,7 +135,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
         }),
         new webpack.HashedModuleIdsPlugin(),
         new webpack.ProvidePlugin({  // 使得在项目各处都可以通过$引用jQuery，并且bootstrap也可以找到jquery
-            $: 'jquery',
+            $: "jquery",
             jQuery: "jquery",
             jquery: "jquery"
         })

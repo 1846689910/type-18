@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
+import PropTypes from "prop-types";
 import {increase, decrease, fetchData} from "../settings/actions";
 import {Link} from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
@@ -22,10 +24,16 @@ const Counter = (props) => {
         </div>
     );
 };
+Counter.propTypes = {
+    store: PropTypes.object
+};
 const Messenger = ({store}) => (<div style={{textAlign: "center"}}>
     <input type="text" disabled value={store.getState().message}/>
     <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => store.dispatch(fetchData())}>fetch</button>
 </div>);
+Messenger.propTypes = {
+    store: PropTypes.object
+};
 export default class ReduxConcise extends React.Component {
     constructor(props){
         super(props);
@@ -45,3 +53,7 @@ export default class ReduxConcise extends React.Component {
         );
     }
 }
+ReduxConcise.propTypes = {
+    store: PropTypes.object,
+    route: PropTypes.object
+};
