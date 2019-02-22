@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import PropTypes from "prop-types";
-import {createSelector} from  "reselect";
+import { createSelector } from "reselect";
 import { connect } from "react-redux";
 import { showAll, showActive, showCompleted, ActionTypes, fetchData } from "../settings/actions";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 
 /**
@@ -14,15 +14,16 @@ import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
  2. Selectors are efficient. A selector is not recomputed unless one of its arguments changes.
  3. Selectors are composable. They can be used as input to other selectors.
  * */
-const getVisibleTasks = state => {  // 根据sotre中的state.filterText的变化来决定我们要看的tasks的子集
-    switch (state.filterText){
-        case ActionTypes.SHOW_ALL:
-            return state.tasks;
-        case ActionTypes.SHOW_COMPLETED:
-            return state.tasks.filter(task => task.status === "completed");
-        case ActionTypes.SHOW_ACTIVE:
-            return state.tasks.filter(task => task.status === "active");
-    }
+const getVisibleTasks = state => {
+  // 根据sotre中的state.filterText的变化来决定我们要看的tasks的子集
+  switch (state.filterText) {
+    case ActionTypes.SHOW_ALL:
+      return state.tasks;
+    case ActionTypes.SHOW_COMPLETED:
+      return state.tasks.filter(task => task.status === "completed");
+    case ActionTypes.SHOW_ACTIVE:
+      return state.tasks.filter(task => task.status === "active");
+  }
 };
 const getMessage = state => state.message;
 /**
@@ -30,46 +31,73 @@ const getMessage = state => state.message;
  * tasks的计算结果
  * reselect 就要对这个tasks作memorize
  * */
-  // 写法1: 数组作为参数
-const selector1 = () => createSelector([
-    (state, props) => state
-], getVisibleTasks);  // 这个getVisibleTasks的函数的参数顺序要和数组一样，其实就是把数组的参数传了进去
-  // 写法2:不写成数组也可以, 但是建议使用写法1
-const selector2 = () => createSelector(
+// 写法1: 数组作为参数
+const selector1 = () =>
+  createSelector(
+    [(state, props) => state],
+    getVisibleTasks
+  ); // 这个getVisibleTasks的函数的参数顺序要和数组一样，其实就是把数组的参数传了进去
+// 写法2:不写成数组也可以, 但是建议使用写法1
+const selector2 = () =>
+  createSelector(
     (state, props) => state,
     getVisibleTasks
-);
-const messageSelector = () => createSelector([
-    (state, props) => state,
-], getMessage);
+  );
+const messageSelector = () =>
+  createSelector(
+    [(state, props) => state],
+    getMessage
+  );
 /**
  * the presentational component of VisibleTasks
  * */
 const VisibleTasksPC = props => {
-    return (<div>
-        <p style={{textAlign: "center"}}><b><i>Reselect Display(combined with React-Redux)</i></b></p>
-        <p>tasks: </p>
-        <ul>{
-            props.tasks.map((task, i) => <li key={i}>{task.name}: {task.status}</li>)
-        }</ul>
-        <div style={{display: "flex", justifyContent: "space-evenly"}}>
-            <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showAll}>All</button>
-            <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showCompleted}>Completed</button>
-            <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showActive}>Active</button>
-            <Link to="/"><button styleName="bootstrap.btn bootstrap.btn-primary">to /</button></Link>
-        </div>
-    </div>);
+  return (
+    <div>
+      <p style={{ textAlign: "center" }}>
+        <b>
+          <i>Reselect Display(combined with React-Redux)</i>
+        </b>
+      </p>
+      <p>tasks: </p>
+      <ul>
+        {props.tasks.map((task, i) => (
+          <li key={i}>
+            {task.name}: {task.status}
+          </li>
+        ))}
+      </ul>
+      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showAll}>
+          All
+        </button>
+        <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showCompleted}>
+          Completed
+        </button>
+        <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showActive}>
+          Active
+        </button>
+        <Link to="/">
+          <button styleName="bootstrap.btn bootstrap.btn-primary">to /</button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 VisibleTasksPC.propTypes = {
-    tasks: PropTypes.array
+  tasks: PropTypes.array
 };
-const MessengerPC = ({dispatch, message}) => (<div style={{textAlign: "center"}}>
-    <input type="text" disabled value={message}/>
-    <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => dispatch(fetchData())}>fetch</button>
-</div>);
+const MessengerPC = ({ dispatch, message }) => (
+  <div style={{ textAlign: "center" }}>
+    <input type="text" disabled value={message} />
+    <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => dispatch(fetchData())}>
+      fetch
+    </button>
+  </div>
+);
 MessengerPC.propTypes = {
-    dispatch: PropTypes.function,
-    message: PropTypes.string
+  dispatch: PropTypes.function,
+  message: PropTypes.string
 };
 /**
  * Reselect 的用法1:
@@ -88,24 +116,24 @@ MessengerPC.propTypes = {
  都会自己保存自己的listId, 不会只有一个listId
  * */
 const mapStateToProps1 = (state, props) => ({
-    tasks: getVisibleTasks(state),
-    message: getMessage(state)
+  tasks: getVisibleTasks(state),
+  message: getMessage(state)
 });
 /**
  * Reselect 的用法2:
  * 将mapStateToProps再包裹一层，并使用selector. 在connect中传入mapStateToPropsBuilder
  * */
-const mapStateToProps2 = () => ((state, props) => ({
-    tasks: selector1()(state, props)  // 区别于getVisibleTasks方法，我们传入的state, props来生成getVisibleTasks方法
-}));
-const mapStateToProps2_1 = () => ((state, props) => ({
-    message: messageSelector()(state, props)
-}));
+const mapStateToProps2 = () => (state, props) => ({
+  tasks: selector1()(state, props) // 区别于getVisibleTasks方法，我们传入的state, props来生成getVisibleTasks方法
+});
+const mapStateToProps2_1 = () => (state, props) => ({
+  message: messageSelector()(state, props)
+});
 
 const mapDispatchToProps = (dispatch, props) => ({
-    showAll: () => dispatch(showAll()),
-    showCompleted: () => dispatch(showCompleted()),
-    showActive: () =>  dispatch(showActive())
+  showAll: () => dispatch(showAll()),
+  showCompleted: () => dispatch(showCompleted()),
+  showActive: () => dispatch(showActive())
 });
 const mapDispatchToProps2 = (dispatch, props) => ({ dispatch }); // 这样props里只能使用dispatch
 /**
@@ -114,19 +142,21 @@ const mapDispatchToProps2 = (dispatch, props) => ({ dispatch }); // 这样props�
  * */
 //const VisibleTasks = connect(mapStateToProps, mapDispatchToProps)(VisibleTasksPC);
 const VisibleTasksCC = connect(
-    mapStateToProps2,
-    mapDispatchToProps
+  mapStateToProps2,
+  mapDispatchToProps
 )(VisibleTasksPC);
 const Messenger = connect(
-    mapStateToProps2_1,
-    (dispatch, props) => ({dispatch})
+  mapStateToProps2_1,
+  (dispatch, props) => ({ dispatch })
 )(MessengerPC);
 
 const ReselectConcise = props => {
-    return (<div>
-        <VisibleTasksCC/>
-        <hr/>
-        <Messenger/>
-    </div>);
+  return (
+    <div>
+      <VisibleTasksCC />
+      <hr />
+      <Messenger />
+    </div>
+  );
 };
 export default ReselectConcise;

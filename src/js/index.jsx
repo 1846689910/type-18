@@ -3,11 +3,11 @@
  */
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import store from "./settings/store";
-import {Provider} from "react-redux";
-import {routes} from "./settings/routes";
-import {renderRoutes} from "react-router-config";
+import { Provider } from "react-redux";
+import { routes } from "./settings/routes";
+import { renderRoutes } from "react-router-config";
 // ReactDOM.render(<Main />, document.querySelector("#root"));
 // const render = () => ReactDOM.render(
 //     <Router>
@@ -25,15 +25,18 @@ import {renderRoutes} from "react-router-config";
 //     </Router>,document.querySelector("#root")
 // );
 const App = () => renderRoutes(routes);
-const render = App => ReactDOM.render(
+const render = App =>
+  ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </Provider>,document.querySelector("#root")
-);
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>,
+    document.querySelector("#root")
+  );
 render(App);
 store.subscribe(() => render(App));
-if (module.hot){ // 开启HMR(Hot Module Replacement)
-    module.hot.accept();
+if (module.hot) {
+  // 开启HMR(Hot Module Replacement)
+  module.hot.accept();
 }
