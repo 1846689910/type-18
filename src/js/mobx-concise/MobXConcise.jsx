@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {observable, configure, computed, decorate, comparer, autorun, reaction, action, runInAction, flow, when} from "mobx";
 import {observer} from "mobx-react";
 import {Link} from "react-router-dom";
@@ -16,7 +17,7 @@ import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
  */
 
 configure({  // 开启了strict mode, 等同于useStrict(true), 必须使用action来更新被观测变量，否则会报错
-    enforceActions: 'observed'  // never, observed, always
+    enforceActions: "observed"  // never, observed, always
 });
 
 // 对于普通的类，应用mobx
@@ -46,7 +47,7 @@ decorate(OrderLine, {
     amount: observable,
     total: computed,
     setPrice: action
-})
+});
 const ol = new OrderLine(1);
 autorun(() => console.log(ol.total));
 ol.setPrice(2);
@@ -56,7 +57,7 @@ ol.setPrice(2);
 const dummyFetch = async() => await new Promise(resolve => setTimeout(() => resolve(123), 1000));
 // dummyFetch().then(res => console.log(res));
 
-@observer export default class MobXConcise extends React.Component {
+@observer class MobXConcise extends React.Component {
     constructor(props){
         super(props);
         this.myNum1 = observable.box(0);
@@ -69,8 +70,8 @@ const dummyFetch = async() => await new Promise(resolve => setTimeout(() => reso
          */
         this.myObj1 = observable({abc: 123});  // observable.object(props, decorators?, options?)
         // 如果把一个普通的 JavaScript 对象传递给 observable 方法，对象的所有属性都将被拷贝至一个克隆对象并将克隆对象转变成可观察的。
-        // (普通对象是指不是使用构造函数创建出来的对象，而是以 Object 作为其原型，或者根本没有原型。) 
-        // 只有普通的对象可以转变成 observable 。对于非普通对象，构造函数负责初始化 observable 属性。 
+        // (普通对象是指不是使用构造函数创建出来的对象，而是以 Object 作为其原型，或者根本没有原型。)
+        // 只有普通的对象可以转变成 observable 。对于非普通对象，构造函数负责初始化 observable 属性。
         // 要么使用 @observable 注解，要么使用 extendObservable 函数
         this.myArr = observable([
             { title: "Spoil tea", completed: true },
@@ -149,3 +150,4 @@ const dummyFetch = async() => await new Promise(resolve => setTimeout(() => reso
         </div>);
     }
 }
+export default MobXConcise;
