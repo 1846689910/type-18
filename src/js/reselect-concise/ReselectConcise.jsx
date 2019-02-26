@@ -96,7 +96,7 @@ const MessengerPC = ({ dispatch, message }) => (
   </div>
 );
 MessengerPC.propTypes = {
-  dispatch: PropTypes.function,
+  dispatch: PropTypes.func,
   message: PropTypes.string
 };
 /**
