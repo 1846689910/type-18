@@ -121,11 +121,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
         "extensions": [".js", ".jsx", ".ts"] // 引入js相关文件可以省略扩展名
     },
     plugins: [
-        new CleanWebpackPlugin([  // the path(s) that should be cleaned
-            "dist/*.*"
-        ], {  // the clean options to use
-            root: __dirname,
-            exclude: [],
+        new CleanWebpackPlugin({  // the clean options to use
             verbose: false
         }),
         new HtmlWebpackPlugin({
