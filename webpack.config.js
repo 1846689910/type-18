@@ -60,7 +60,6 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
                     options: {
                         cacheDirectory: true,
                         plugins: [
-                            "@babel/plugin-syntax-dynamic-import",
                             ["react-css-modules", { webpackHotModuleReloading: true, generateScopedName: `${env.production ? "" : "[name]__[local]___"}[hash:base64:5]` }]
                         ]
                     }
