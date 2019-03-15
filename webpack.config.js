@@ -10,11 +10,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
-const preloadedFiles = require("./preloaded-files")(__dirname);
+// const preloadedFiles = require("./preloaded-files")(__dirname);
 module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123传入参数就可以在这里用env.xxx获取到. config要改成module.exports=env=>object
     entry: [
         "@babel/polyfill",
-        ...preloadedFiles,
+        // ...preloadedFiles,
         `${__dirname}/src/js/index.jsx`
     ],
     output: {

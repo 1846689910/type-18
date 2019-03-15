@@ -1,6 +1,3 @@
-const bootstrap = dirname => [
-    `bootstrap/dist/js/bootstrap.min`,
-]
 const jqueryUI = dirname => [
     `jquery-ui-dist/images/ui-icons_ffffff_256x240.png`,
     `jquery-ui-dist/jquery-ui.min.css`,
@@ -19,8 +16,6 @@ const leaflet = dirname => [
 ];
 module.exports = dirname => {
     const files = [];
-    files.push(`${dirname}/src/images/favicon.ico`);
-    files.push(...bootstrap(dirname));
     files.push(...jqueryUI(dirname));
     files.push(...leaflet(dirname));
     return files;
