@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Window } from "./Window";
 import { app } from "./Container";
 import { People } from "./People";
+import DemoDynamicImport from "./demo-dynamic-import";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
 
 console.log(People);
@@ -52,6 +53,8 @@ export default class Main extends React.Component {
             <button styleName="bootstrap.btn bootstrap.btn-primary">to /mobx</button>
           </Link>
         </div>
+        <hr/>
+        <DemoDynamicImport />
       </div>
     );
   }
