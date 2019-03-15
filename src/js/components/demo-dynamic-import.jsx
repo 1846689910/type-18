@@ -1,9 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setShowFakeComp } from "../settings/actions";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
 import Promise from "bluebird";
+const NamedLazyComp = lazy(() => import("./demo-fake").then(module => ({ default: module.Fake })));
+const DefaultLazyComp = lazy(() => import("./demo-fake"));
 
 let Fake;
 const loadFakeComp = (dispatch, doRefresh = false) => {
@@ -33,6 +35,11 @@ const DynamicImportDemo = props => {
       >
         Refresh Fake Comp
       </button>
+      <h6>React Lazy Suspense Dynamic Import</h6>
+      <Suspense fallback={<div>MyLazyComp is Loading</div>}>
+        <NamedLazyComp />
+        <DefaultLazyComp />
+      </Suspense>
     </div>
   );
 };
