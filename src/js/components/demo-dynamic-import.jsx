@@ -6,7 +6,9 @@ import { setShowFakeComp } from "../settings/actions";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
 import Promise from "bluebird";
 const NamedLazyComp = lazy(() => import("./demo-fake").then(module => ({ default: module.Fake })));
-// const NamedLazyComp2 = loadable()
+const NamedLazyComp2 = loadable(() =>
+  import("./demo-fake").then(module => ({ default: module.Fake }))
+);
 const DefaultLazyComp = lazy(() => import("./demo-fake"));
 const DefaultLazyComp2 = loadable(() => import("./demo-fake"));
 
@@ -40,7 +42,7 @@ const DynamicImportDemo = props => {
           Refresh Fake Comp
         </button>
       </div>
-      <br/>
+      <br />
       <div>
         <h6>React Lazy Suspense Dynamic Import</h6>
         <Suspense fallback={<div>MyLazyComp is Loading</div>}>
@@ -48,9 +50,10 @@ const DynamicImportDemo = props => {
           <DefaultLazyComp />
         </Suspense>
       </div>
-      <br/>
+      <br />
       <div>
         <h6>@loadable/component Dynamic Import</h6>
+        <NamedLazyComp2 />
         <DefaultLazyComp2 />
         <div>
           <a href="https://www.smooth-code.com/open-source/loadable-components/docs/loadable-vs-react-lazy/">
