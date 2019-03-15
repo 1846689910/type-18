@@ -85,7 +85,10 @@ const VisibleTasksPC = props => {
   );
 };
 VisibleTasksPC.propTypes = {
-  tasks: PropTypes.array
+  tasks: PropTypes.array,
+  showAll: PropTypes.func,
+  showCompleted: PropTypes.func,
+  showActive: PropTypes.func
 };
 const MessengerPC = ({ dispatch, message }) => (
   <div style={{ textAlign: "center" }}>
