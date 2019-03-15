@@ -125,7 +125,7 @@ module.exports = env => ({  // 在package.json的scripts中使用 --env.xxx=123�
             verbose: false
         }),
         new HtmlWebpackPlugin({
-            title: "Webpack Test",
+            title: "Type-18(CSR)",
             template: "./template/template.html",
             filename: "./index.html"
         }),
