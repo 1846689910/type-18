@@ -25,7 +25,7 @@ const DynamicImportDemo = props => {
   loadFakeComp(dispatch);
   return (
     <div>
-      <h6>Dynamic Import</h6>
+      <h6>Webpack Dynamic Import</h6>
       {showFakeComp.value && Fake ? <Fake {...props} /> : <div>Fake Comp is loading ...</div>}
       <button
         styleName={"bootstrap.btn bootstrap.btn-primary"}

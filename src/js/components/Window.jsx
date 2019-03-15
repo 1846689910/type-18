@@ -1,12 +1,14 @@
 /**
  * Created by Eric on 9/6/2018.
  */
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { tileToBBox, pointToTileFraction, googleToTile } from "global-mercator";
 import { ActionWatcher } from "./utils";
 import { TopComp, TopComp1 } from "../context/ContextShow";
 import { ValidationWrapper } from "./ValidationTemp";
 import DemoDynamicImport from "./demo-dynamic-import";
+const NamedLazyComp = lazy(() => import("./demo-fake").then(module => ({ default: module.Fake })));
+const DefaultLazyComp = lazy(() => import("./demo-fake"));
 import custom from "../../css/main.css"; // eslint-disable-line
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
 import fontawesome from "font-awesome/css/font-awesome.min.css"; // eslint-disable-line
@@ -102,7 +104,14 @@ export class Window extends React.Component {
         <hr />
         <ValidationWrapper />
         <hr />
-        <DemoDynamicImport />
+        <div>
+          <DemoDynamicImport />
+          <h6>React Lazy Suspense Dynamic Import</h6>
+          <Suspense fallback={<div>MyLazyComp is Loading</div>}>
+            <NamedLazyComp />
+            <DefaultLazyComp />
+          </Suspense>
+        </div>
         <hr />
         <TopComp myMessage={"hello world"} />
         <TopComp1 />
