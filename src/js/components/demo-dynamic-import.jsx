@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setShowFakeComp } from "../settings/actions";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
+import custom from "../../css/main.css";
 import Promise from "bluebird";
 const NamedLazyComp = lazy(() => import("./demo-fake").then(module => ({ default: module.Fake })));
 const NamedLazyComp2 = loadable(() =>
@@ -31,7 +32,7 @@ const DynamicImportDemo = props => {
   const { showFakeComp, dispatch } = props;
   loadFakeComp(dispatch);
   return (
-    <div>
+    <div styleName={"custom.dynamic-import-box"}>
       <div>
         <h6>Webpack Dynamic Import</h6>
         {showFakeComp.value && Fake ? <Fake {...props} /> : <div>Fake Comp is loading ...</div>}
@@ -52,14 +53,15 @@ const DynamicImportDemo = props => {
       </div>
       <br />
       <div>
-        <h6>@loadable/component Dynamic Import</h6>
+        <h6>
+          <a href="https://www.smooth-code.com/open-source/loadable-components/docs/loadable-vs-react-lazy/">
+            @loadable/component
+          </a>&nbsp;
+          Dynamic Import
+        </h6>
         <NamedLazyComp2 />
         <DefaultLazyComp2 />
-        <div>
-          <a href="https://www.smooth-code.com/open-source/loadable-components/docs/loadable-vs-react-lazy/">
-            check comparison
-          </a>
-        </div>
+        <div />
       </div>
     </div>
   );

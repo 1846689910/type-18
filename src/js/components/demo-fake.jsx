@@ -1,11 +1,11 @@
 import React from "react";
 export const Fake = () => (
   <div>
-    <strong>Fake Comp Here</strong>
+    <strong>Named Fake Comp Here</strong>
   </div>
 );
 export default () => (
   <div>
-    <strong>Fake Comp Here</strong>
+    <strong>Default Fake Comp Here</strong>
   </div>
 );
