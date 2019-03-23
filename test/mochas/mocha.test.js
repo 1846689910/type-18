@@ -2,7 +2,30 @@ const chai = require("chai");
 const expect = chai.expect;
 const sinon = require("sinon");
 describe("Sinon library", () => {
-  /**  */
+  /**
+   * 1 自定义的需要有方法或属性被stub的module，和需要被test的并且使用前者module的module最好都能在自己的case中require，否则可能会无法正确替换
+   * 2 需要被测试的module需要在stub之后再引入
+   * 3 有时在每次测试后清空reqire.cache是必要的
+  describe("coder", () => {
+    let fakeConfig;
+    describe("function resolveKey", () => {
+      afterEach(() => {
+        if (fakeConfig) {
+          fakeConfig.restore();
+          fakeConfig = null;
+        }
+        delete process.env.CODER_KEY;
+        Object.keys(require.cache).forEach(key => delete require.cache[key]);
+      });
+      it("should use config.KEY if no CODER_KEY given", () => {
+        fakeConfig = sinon.stub(require("../src/config"), "KEY").value("key");
+        const { resolveKey } = require("../src/coder"); // needs to load self-defined module after stub, otherwise cannot stub property inside
+        const key = resolveKey();
+        expect(key).to.equal("key");
+      });
+    });
+  });
+   */
   it("fakes normally", async () => {
     const fn = sinon.fake.returns(123);
     expect(fn()).to.equal(123);
