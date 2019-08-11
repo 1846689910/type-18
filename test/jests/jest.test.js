@@ -1,7 +1,8 @@
 /**
  * Created by Eric on 9/6/2018.
  */
-import "babel-polyfill";
+import "core-js";
+import "regenerator-runtime/runtime";
 import assert from "assert";
 import fetch from "node-fetch";
 import renderer from "react-test-renderer";
