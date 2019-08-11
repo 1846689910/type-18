@@ -9,7 +9,7 @@ import { ValidationWrapper } from "./ValidationTemp";
 import custom from "../../styles/main.css"; // eslint-disable-line
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
 import fontawesome from "font-awesome/css/font-awesome.min.css"; // eslint-disable-line
-import favicon from "../../images/favicon.ico";
+import favicon from "../../images/favicon.ico"; // eslint-disable-line no-unused-vars
 export class Window extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ export class Window extends React.Component {
       content: ""
     };
     this.inputWatcher = new ActionWatcher(
-      e =>
+      e =>  // eslint-disable-line no-unused-vars
         this.setState({
           content: "",
           onInput: true

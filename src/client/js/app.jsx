@@ -8,7 +8,7 @@ import store from "./settings/store";
 import { Provider } from "react-redux";
 import { routes } from "./settings/routes";
 import { renderRoutes } from "react-router-config";
-import favicon from "../images/favicon.ico";
+import favicon from "../images/favicon.ico";  // eslint-disable-line no-unused-vars
 // ReactDOM.render(<Main />, document.querySelector("#root"));
 // const render = () => ReactDOM.render(
 //     <Router>

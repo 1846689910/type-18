@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setShowFakeComp } from "../settings/actions";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
-import custom from "../../styles/main.css";
+import custom from "../../styles/main.css"; // eslint-disable-line no-unused-vars
 import Promise from "bluebird";
 const NamedLazyComp = lazy(() => import("./demo-fake").then(module => ({ default: module.Fake })));
 const NamedLazyComp2 = loadable(() =>
