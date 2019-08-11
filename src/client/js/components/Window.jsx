@@ -6,7 +6,7 @@ import { tileToBBox, pointToTileFraction, googleToTile } from "global-mercator";
 import { ActionWatcher } from "./utils";
 import { TopComp, TopComp1 } from "../context/ContextShow";
 import { ValidationWrapper } from "./ValidationTemp";
-import custom from "../../styles/main.css"; // eslint-disable-line
+import custom from "../../styles/main.scss"; // eslint-disable-line
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css"; // eslint-disable-line
 import fontawesome from "font-awesome/css/font-awesome.min.css"; // eslint-disable-line
 import favicon from "../../images/favicon.ico"; // eslint-disable-line no-unused-vars
