@@ -39,5 +39,8 @@ render(App);
 store.subscribe(() => render(App));
 if (module.hot) {
   // 开启HMR(Hot Module Replacement)
-  module.hot.accept();
+  module.hot.accept("./settings/routes", () => {
+    const r = require("./settings/routes");
+    render(() => renderRoutes(r.routes));
+  });
 }
