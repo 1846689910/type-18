@@ -23,10 +23,6 @@ development with `HMR` enabled default
 ```bash
 npm start
 ```
-#### start project in production mode
-```bash
-npm run prod
-```
 
 ## **Build Project**
 ```bash
@@ -37,10 +33,12 @@ npm run build
 #### test with mocha
 ```bash
 npm run mocha test/mocha.test.js
+npm run mochas
 ```
 #### test with jest
 ```bash
 npm run jest test/mocha.test.js
+npm run jests
 ```
 #### test with mocha
 ```bash
@@ -63,4 +61,4 @@ transpile SRC.js
 will generate a `SRC.transpiled.js` to the same path
 
 ### **Develop**
-the entry file is `index.jsx`. The router and redux store, actions, reducers are defined in `settings`
+the entry file is `app.jsx`. The router and redux store, actions, reducers are defined in `settings`
