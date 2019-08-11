@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --config webpack.config.dev.js --progress",
     "prod": "webpack-dev-server --open --mode production --env.production",
     "dev": "webpack --mode development --env.development",
-    "build": "webpack --progress",
+    "build": "webpack",
     "test": "node ./node_modules/mocha/bin/mocha",
     "mocha": "node ./node_modules/mocha/bin/mocha",
     "jest": "node ./node_modules/jest/bin/jest",
