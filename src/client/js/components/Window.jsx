@@ -19,7 +19,9 @@ export class Window extends React.Component {
       content: ""
     };
     this.inputWatcher = new ActionWatcher(
-      e =>  // eslint-disable-line no-unused-vars
+      (
+        e // eslint-disable-line no-unused-vars
+      ) =>
         this.setState({
           content: "",
           onInput: true
@@ -93,7 +95,7 @@ export class Window extends React.Component {
         </button>
         <button styleName="fontawesome.fa fontawesome.fa-mail-forward" aria-hidden="true" />
         <div>
-          <img src={favicon}/>
+          <img src={favicon} />
         </div>
         <div className="div1">
           <input type="text" onChange={this.inputWatcher.watch} />
