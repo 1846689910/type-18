@@ -122,16 +122,16 @@ class MobXConcise extends React.Component {
     runInAction(() => this.myNum1.set(this.myNum1.get() + 1));
   };
   @action addNum2 = () => this.myNum2++;
-  // @action.bound addNum2_1() { // TODO: needs to fix for descriptor `.kind` undefined issue
-  //   // @action.bound会将方法自动绑定到对象，不能再箭头函数上使用，箭头函数有自己继承来的this，不能重新绑定
-  //   this.myNum2++; // 所以要么用 @action 箭头函数 或者 @action.bound 普通函数
-  // }
+  @action.bound addNum2_1() { // TODO: needs to fix for descriptor `.kind` undefined issue
+    // @action.bound会将方法自动绑定到对象，不能再箭头函数上使用，箭头函数有自己继承来的this，不能重新绑定
+    this.myNum2++; // 所以要么用 @action 箭头函数 或者 @action.bound 普通函数
+  }
   threshold2 = autorun(() => {
     if (this.myNum2 > 100) action(() => (this.myNum2 = 0))();
   });
-  // @computed get sum() { // TODO: needs to fix for descriptor `.kind` undefined issue
-  //   return this.myNum1.get() + this.myNum2;
-  // }
+  @computed get sum() { // TODO: needs to fix for descriptor `.kind` undefined issue
+    return this.myNum1.get() + this.myNum2;
+  }
   /** 异步的问题
    * 如果异步函数标记了@action, 但是异步的回调函数并非是@action的，也就是说@action只对异步函数起作用，而不对其回调负责
    * 造成的结果就是如果你想在回调里面更新observable会报错. 所以这时候runInAction就是最好的选择
