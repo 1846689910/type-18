@@ -8,7 +8,7 @@ import store from "./settings/store";
 import { Provider } from "react-redux";
 import { routes } from "./settings/routes";
 import { renderRoutes } from "react-router-config";
-import favicon from "../images/favicon.ico";
+import favicon from "../images/favicon.ico";  // eslint-disable-line no-unused-vars
 // ReactDOM.render(<Main />, document.querySelector("#root"));
 // const render = () => ReactDOM.render(
 //     <Router>
@@ -39,5 +39,8 @@ render(App);
 store.subscribe(() => render(App));
 if (module.hot) {
   // 开启HMR(Hot Module Replacement)
-  module.hot.accept();
+  module.hot.accept("./settings/routes", () => {
+    const r = require("./settings/routes");
+    render(() => renderRoutes(r.routes));
+  });
 }

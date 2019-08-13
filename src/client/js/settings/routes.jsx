@@ -12,7 +12,7 @@ import store from "./store";
 const Root = ({ route }) => (
   <div>
     {/* 对于子组件，是必须有下方这句才能渲染路由的, 第二个参数可以添加一些props,所有的路由组件都可以通过props.abc获取到 */}
-    {renderRoutes(route.routes, { abc: 123 })}
+    {renderRoutes(route.routes, { abc: 1231 })}
   </div>
 );
 Root.propTypes = {
