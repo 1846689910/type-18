@@ -4,16 +4,9 @@ The `type-18` is a self-defined front-end only project starter which is supporte
 
 
 ## **Install**
-### 1 create project directory and install webpack
+
 ```bash
-mkdir my-starter
-cd my-starter
-npm init -y
-npm install webpack webpack-cli --save-dev
-```
-### 2 install other dependencies
-```bash
-npm install
+$ npm install
 ```
 
 ## **Start Web Dev Server**
@@ -21,33 +14,33 @@ npm install
 
 development with `HMR` enabled default
 ```bash
-npm start
+$ npm start
 ```
 
 ## **Build Project**
 ```bash
-npm run build
+$ npm run build
 ```
 
 ## **Test**
 #### test with mocha
 ```bash
-npm run mocha test/mocha.test.js
-npm run mochas
+$ npm run mocha test/mocha.test.js
+$ npm run mochas
 ```
 #### test with jest
 ```bash
-npm run jest test/mocha.test.js
-npm run jests
+$ npm run jest test/mocha.test.js
+$ npm run jests
 ```
 #### test with mocha
 ```bash
-npm run mocha integrationTest
+$ npm run mocha integrationTest
 ```
 ## **Transpile**
 the project support transpile ES6 to ES5 via `@babel/core`
 ```bash
-npm link
+$ npm link
 ```
 Then, after cli generated
 use
