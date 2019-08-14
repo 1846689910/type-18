@@ -4,11 +4,12 @@ const method = process.argv[2];
 
 const isWin32 = process.platform === "win32";
 const setEnv = env => ({ ...env, ...(!isWin32 && { PATH: process.env.PATH + ":/usr/local/bin" }) });
-
-const webpackDevServer = isWin32 ? "webpack-dev-server" : '$"webpack-dev-server"'; // eslint-disable-line
+const baseCommand = cmd => (isWin32 ? cmd : `$"${cmd}"`);
 
 const baseCommands = {
-  runDevServer: `${webpackDevServer} --config webpack.config.dev.js --progress --color`
+  runDevServer: `${baseCommand(
+    "webpack-dev-server"
+  )} --config webpack.config.dev.js --progress --color`
 };
 
 const methods = {
