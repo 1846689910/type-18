@@ -10,7 +10,7 @@ const baseCommands = {
   runDevServer: `${baseCommand(
     "webpack-dev-server"
   )} --config webpack.config.dev.js --progress --color`,
-  build: baseCommand("webpack")
+  build: `${baseCommand("webpack")} --color`
 };
 
 const methods = {
