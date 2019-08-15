@@ -20,10 +20,7 @@ const methods = {
   },
   runProd() {
     shell.exec(baseCommands.runDevServer, {
-      env: setEnv({
-        NODE_ENV: "production",
-        MOCK_PROD_IN_DEV: "true"
-      })
+      env: setEnv({ NODE_ENV: "production" })
     });
   }
 };
