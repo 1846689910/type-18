@@ -9,7 +9,8 @@ const baseCommand = cmd => (isWin32 ? cmd : `$"${cmd}"`);
 const baseCommands = {
   runDevServer: `${baseCommand(
     "webpack-dev-server"
-  )} --config webpack.config.dev.js --progress --color`
+  )} --config webpack.config.dev.js --progress --color`,
+  build: baseCommand("webpack")
 };
 
 const methods = {
@@ -20,6 +21,11 @@ const methods = {
   },
   runProd() {
     shell.exec(baseCommands.runDevServer, {
+      env: setEnv({ NODE_ENV: "production" })
+    });
+  },
+  build(){
+    shell.exec(baseCommands.build, {
       env: setEnv({ NODE_ENV: "production" })
     });
   }

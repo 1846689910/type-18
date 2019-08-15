@@ -7,7 +7,7 @@
     "start": "npm run dev",
     "dev": "node ./clis/cli.js runDev",
     "prod": "node ./clis/cli.js runProd",
-    "build": "webpack",
+    "build": "node ./clis/cli.js build",
     "test": "node ./node_modules/mocha/bin/mocha",
     "mocha": "node ./node_modules/mocha/bin/mocha",
     "jest": "node ./node_modules/jest/bin/jest",
