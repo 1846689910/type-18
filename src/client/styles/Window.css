@@ -1,0 +1,61 @@
+.close {
+  color: red;
+  font-size: 14px;
+}
+.minimize {
+  color: #ffd662;
+  font-size: 14px;
+}
+.maximize {
+  color: #79c753;
+  font-size: 14px;
+}
+.close:hover,
+.minimize:hover,
+.maximize:hover {
+  cursor: pointer;
+}
+.window-ctrl {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 70px;
+  justify-content: space-evenly;
+  height: 20px;
+  line-height: 20px;
+}
+.row1 {
+  align-self: center;
+  text-align: center;
+}
+.demo-btn {
+  padding: 5px 40px;
+}
+.window-body {
+  height: 100%;
+  margin: 10px;
+  display: flex;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.window-title {
+  height: 20px;
+  text-align: center;
+}
+.window {
+  width: 600px;
+  height: 450px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  border-radius: 10px;
+  padding: 3px 0 0 0;
+  background: white;
+  margin-left: -300px;
+  margin-top: -225px;
+  top: 50%;
+  left: 50%;
+}
