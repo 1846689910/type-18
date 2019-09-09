@@ -10,12 +10,9 @@ class DemoHome extends React.Component {
     super(props);
   }
   render() {
-    const { dispatch } = this.props;
+    const { dispatch, route } = this.props;
     return <div style={{display: "flex", flexFlow: "column wrap", justifyContent: "center"}}>
-      <div style={{ alignSelf: "center", width: "80%", textAlign: "center", margin: "10px 0" }}>
-        <h1 style={{ textAlign: "left" }}>type-18</h1>
-      </div>
-      <Nav/>
+      <Nav route={route}/>
       <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", background: "gray"}}>Carousel</div>
       <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", background: "gray"}}>World</div>
       <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", background: "gray"}}>Row</div>
@@ -23,7 +20,10 @@ class DemoHome extends React.Component {
     </div>;
   }
 }
-DemoHome.propTypes = {};
+DemoHome.propTypes = {
+  dispatch: PropTypes.func,
+  route: PropTypes.object
+};
 export default connect(
   state => state,
   dispatch => ({ dispatch })

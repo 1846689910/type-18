@@ -3,8 +3,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { createSelector } from "reselect";
 import { connect } from "react-redux";
-import { showAll, showActive, showCompleted, ActionTypes, fetchData } from "../settings/actions";
+import {
+  showAll,
+  showActive,
+  showCompleted,
+  ActionTypes,
+  fetchData
+} from "../settings/actions";
 import { Link } from "react-router-dom";
+import Nav from "../components/nav";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 
 /**
@@ -68,13 +75,22 @@ const VisibleTasksPC = props => {
         ))}
       </ul>
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showAll}>
+        <button
+          styleName="bootstrap.btn bootstrap.btn-primary"
+          onClick={props.showAll}
+        >
           All
         </button>
-        <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showCompleted}>
+        <button
+          styleName="bootstrap.btn bootstrap.btn-primary"
+          onClick={props.showCompleted}
+        >
           Completed
         </button>
-        <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={props.showActive}>
+        <button
+          styleName="bootstrap.btn bootstrap.btn-primary"
+          onClick={props.showActive}
+        >
           Active
         </button>
         <Link to="/">
@@ -93,7 +109,10 @@ VisibleTasksPC.propTypes = {
 const MessengerPC = ({ dispatch, message }) => (
   <div style={{ textAlign: "center" }}>
     <input type="text" disabled value={message} />
-    <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => dispatch(fetchData())}>
+    <button
+      styleName="bootstrap.btn bootstrap.btn-primary"
+      onClick={() => dispatch(fetchData())}
+    >
       fetch
     </button>
   </div>
@@ -154,12 +173,17 @@ const Messenger = connect(
 )(MessengerPC);
 
 const ReselectConcise = props => {
+  const { route } = props;
   return (
     <div>
+      <Nav route={route} />
       <VisibleTasksCC />
       <hr />
       <Messenger />
     </div>
   );
+};
+ReselectConcise.propTypes = {
+  route: PropTypes.object
 };
 export default ReselectConcise;
