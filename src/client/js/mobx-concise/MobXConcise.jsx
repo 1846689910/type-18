@@ -174,13 +174,6 @@ class MobXConcise extends React.Component {
             myNum1: {this.myNum1.get()}, myNum2: {this.myNum2}
           </span>
         </div>
-        <div>
-          <Link to="/">
-            <button styleName="bootstrap.btn bootstrap.btn-primary">
-              to /
-            </button>
-          </Link>
-        </div>
       </div>
     );
   }

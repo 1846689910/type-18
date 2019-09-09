@@ -93,9 +93,6 @@ const VisibleTasksPC = props => {
         >
           Active
         </button>
-        <Link to="/">
-          <button styleName="bootstrap.btn bootstrap.btn-primary">to /</button>
-        </Link>
       </div>
     </div>
   );

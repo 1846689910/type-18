@@ -34,11 +34,6 @@ const CounterPC = props => {
           >
             decrease
           </button>
-          <Link to="/">
-            <button styleName="bootstrap.btn bootstrap.btn-primary">
-              to /
-            </button>
-          </Link>
         </div>
       </div>
     </div>
