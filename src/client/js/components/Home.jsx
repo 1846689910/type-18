@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Window from "./Window1";
+import Window from "./window1";
 
 const Home = props => {
   const { dispatch } = props;
