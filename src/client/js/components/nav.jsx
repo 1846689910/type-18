@@ -36,8 +36,8 @@ class Nav extends React.Component {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav mr-auto" styleName={"nav.navbar-nav"}>
-                  <li className={`nav-item ${this.validateActive(route, "/")}`} styleName={"nav.nav-item"}>
-                    <Link className="nav-link" to="/">
+                  <li className={`nav-item ${this.validateActive(route, "/home")}`} styleName={"nav.nav-item"}>
+                    <Link className="nav-link" to="/home">
                       Home <span className="sr-only">(current)</span>
                     </Link>
                   </li>
