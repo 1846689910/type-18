@@ -15,7 +15,7 @@ function getPopupWindow(props) {
     </div>
   `;
   const popup = new PopupWindow({ title: "Welcome to type-18", bodyHTML });
-  popup._window.querySelector(`button.${bs.btn}`).addEventListener(
+  popup.getWindowBody().querySelector(`button.${bs.btn}`).addEventListener(
     "click",
     () => {
       Binder.dispatch({ type: "REDIRECT", props, uri: "/home" });
