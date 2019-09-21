@@ -5,8 +5,8 @@ import { Binder } from "cicero/lib/client";
 
 function getPopupWindow(props) {
   const bodyHTML = `
-    <div style="height: 100%; width: 100%; display: flex; flex-flow: column wrap; overflow: hidden;">
-      <div style="position: relative; top: 35%;">
+    <div style="height: 100%; width: 100%; display: flex; flex-flow: row wrap; justify-content: center; overflow: hidden;">
+      <div style="align-self:center;">
         <h2 style="text-align:center;">...Amazing In Built...</h2>
         <div style="text-align:center;">
           <button class="${bs.btn} ${bs["btn-primary"]} ${ws["demo-btn"]}">Demo</button>
