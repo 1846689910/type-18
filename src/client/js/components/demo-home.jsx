@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Nav from "./nav";
+import Nav from "./Nav";
 import bs from "bootstrap/dist/css/bootstrap.min.css";
 
 class DemoHome extends React.Component {

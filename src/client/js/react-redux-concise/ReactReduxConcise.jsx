@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { increase, decrease, fetchData } from "../settings/actions";
 import { Link } from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 /**
  * Counter is a presentational component(pc)
  * pc (for UI only, no state mgmt, all data from props, no redux api)

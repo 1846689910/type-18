@@ -16,7 +16,7 @@ import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 /**
  * mobx 重要概念

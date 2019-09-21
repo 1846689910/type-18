@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { increase, decrease, fetchData } from "../settings/actions";
 import { Link } from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 
 const Counter = props => {
   const divStyle = {

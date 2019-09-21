@@ -11,7 +11,7 @@ import {
   fetchData
 } from "../settings/actions";
 import { Link } from "react-router-dom";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 
 /**
