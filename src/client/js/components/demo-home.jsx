@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
+import DemoForm from "./demo-form";
 import Carousel from "./Carousel";
 import bs from "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,7 +18,9 @@ class DemoHome extends React.Component {
       <div style={{ alignSelf: "center", width: "80%", textAlign: "center" }}>
         <Carousel />
       </div>
-      <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", background: "gray"}}>World</div>
+      <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", display: "flex", flexFlow: "row wrap", justifyContent: "center"}}>
+        <DemoForm/>
+      </div>
       <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", background: "gray"}}>Row</div>
       <div style={{alignSelf: "center", width: "80%", textAlign: "center", height: "200px", margin: "10px 0", background: "gray"}}>Row</div>
     </div>;
