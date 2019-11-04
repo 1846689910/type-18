@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { increase, decrease, fetchData } from "../settings/actions";
 import { Link } from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
+import Nav from "../components/Nav";
 
 const Counter = props => {
   const divStyle = {
@@ -18,7 +19,9 @@ const Counter = props => {
         </b>
       </p>
       <div style={divStyle}>
-        <h3 style={{ textAlign: "center" }}>{store.getState().counter.value}</h3>
+        <h3 style={{ textAlign: "center" }}>
+          {store.getState().counter.value}
+        </h3>
         <div style={{ textAlign: "center" }}>
           <button
             styleName="bootstrap.btn bootstrap.btn-success"
@@ -32,9 +35,6 @@ const Counter = props => {
           >
             decrease
           </button>
-          <Link to="/">
-            <button styleName="bootstrap.btn bootstrap.btn-primary">to /</button>
-          </Link>
         </div>
       </div>
     </div>
@@ -69,6 +69,7 @@ export default class ReduxConcise extends React.Component {
     const { store } = this.props.route;
     return (
       <div>
+        <Nav route={this.props.route} />
         <Counter store={store} />
         <hr />
         <Messenger store={store} />

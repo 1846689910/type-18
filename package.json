@@ -1,6 +1,12 @@
 {
   "name": "type-18",
-  "version": "2.0.0",
+  "version": "2.3.0",
+  "homepage": "https://github.com/1846689910/type-18",
+  "bugs": "https://github.com/1846689910/type-18/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1846689910/type-18.git"
+  },
   "description": "The `type-18` is a self-defined front-end only project starter which is supported by `React`, `Redux`, `Webpack` and other libraries. The Project starter includes demos for `redux`, `react-redux`, `reselect`, `mobx` and other self-defined classes and components. It has already setup `HMR`, `code-spliting`, `babel-plugin-react-css-modules`. The project also supports tests via `mocha`, `jest` and integration test simulating user activity driven by `selenium` and `chromedriver`",
   "main": "index.js",
   "scripts": {
@@ -25,7 +31,7 @@
     "Redux",
     "MobX"
   ],
-  "author": "",
+  "author": "Eric(Zuhui) He",
   "license": "ISC",
   "devDependencies": {
     "@loadable/component": "^5.7.0",
@@ -73,6 +79,7 @@
   "dependencies": {
     "big.js": "^5.2.2",
     "bootstrap": ">=4.3.1",
+    "cicero": "^1.0.0",
     "font-awesome": "^4.7.0",
     "funny-react-app-archetype": "^1.0.0",
     "global-mercator": "^3.0.3",

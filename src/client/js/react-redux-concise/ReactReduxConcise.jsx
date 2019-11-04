@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { increase, decrease, fetchData } from "../settings/actions";
 import { Link } from "react-router-dom";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-
+import Nav from "../components/Nav";
 /**
  * Counter is a presentational component(pc)
  * pc (for UI only, no state mgmt, all data from props, no redux api)
@@ -34,9 +34,6 @@ const CounterPC = props => {
           >
             decrease
           </button>
-          <Link to="/">
-            <button styleName="bootstrap.btn bootstrap.btn-primary">to /</button>
-          </Link>
         </div>
       </div>
     </div>
@@ -49,7 +46,10 @@ CounterPC.propTypes = {
 const MessengerPC = ({ dispatch, message }) => (
   <div style={{ textAlign: "center" }}>
     <input type="text" disabled value={message.value} />
-    <button styleName="bootstrap.btn bootstrap.btn-primary" onClick={() => dispatch(fetchData())}>
+    <button
+      styleName="bootstrap.btn bootstrap.btn-primary"
+      onClick={() => dispatch(fetchData())}
+    >
       fetch
     </button>
   </div>
@@ -108,9 +108,10 @@ const Messenger = connect(
 )(MessengerPC);
 
 const ReactReduxConcise = props => {
-  console.log(props.route);
+  const { route } = props;
   return (
     <div>
+      <Nav route={route} />
       <CounterCC />
       <hr />
       <Messenger />

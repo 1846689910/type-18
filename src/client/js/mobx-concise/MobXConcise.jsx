@@ -15,6 +15,8 @@ import {
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import React from "react";
+import PropTypes from "prop-types";
+import Nav from "../components/Nav";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 /**
  * mobx 重要概念
@@ -65,7 +67,8 @@ const ol = new OrderLine(1);
 autorun(() => console.log(ol.total));
 ol.setPrice(2);
 
-const dummyFetch = async () => await new Promise(resolve => setTimeout(() => resolve(123), 1000));
+const dummyFetch = async () =>
+  await new Promise(resolve => setTimeout(() => resolve(123), 1000));
 // dummyFetch().then(res => console.log(res));
 
 @observer
@@ -122,14 +125,16 @@ class MobXConcise extends React.Component {
     runInAction(() => this.myNum1.set(this.myNum1.get() + 1));
   };
   @action addNum2 = () => this.myNum2++;
-  @action.bound addNum2_1() { // TODO: needs to fix for descriptor `.kind` undefined issue
+  @action.bound addNum2_1() {
+    // TODO: needs to fix for descriptor `.kind` undefined issue
     // @action.bound会将方法自动绑定到对象，不能再箭头函数上使用，箭头函数有自己继承来的this，不能重新绑定
     this.myNum2++; // 所以要么用 @action 箭头函数 或者 @action.bound 普通函数
   }
   threshold2 = autorun(() => {
     if (this.myNum2 > 100) action(() => (this.myNum2 = 0))();
   });
-  @computed get sum() { // TODO: needs to fix for descriptor `.kind` undefined issue
+  @computed get sum() {
+    // TODO: needs to fix for descriptor `.kind` undefined issue
     return this.myNum1.get() + this.myNum2;
   }
   /** 异步的问题
@@ -155,8 +160,10 @@ class MobXConcise extends React.Component {
     this.myNum2++;
   });
   render() {
+    const { route } = this.props;
     return (
       <div>
+        <Nav route={route} />
         <p style={{ textAlign: "center" }}>
           <b>
             <i>MobX Display</i>
@@ -167,13 +174,11 @@ class MobXConcise extends React.Component {
             myNum1: {this.myNum1.get()}, myNum2: {this.myNum2}
           </span>
         </div>
-        <div>
-          <Link to="/">
-            <button styleName="bootstrap.btn bootstrap.btn-primary">to /</button>
-          </Link>
-        </div>
       </div>
     );
   }
 }
+MobXConcise.propTypes = {
+  route: PropTypes.object
+};
 export default MobXConcise;
