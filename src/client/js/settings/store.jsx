@@ -12,4 +12,4 @@ import logger from "../middlewares/logger";
 /**
  * the unique store accepts one reducer of above
  * */
-export default createStore(reducer3, initialState, applyMiddleware(thunk, logger));
+export default createStore(reducer3, applyMiddleware(thunk, logger));
