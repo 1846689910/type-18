@@ -42,7 +42,7 @@
     "clean-webpack-plugin": "^2.0.0",
     "cookie-parser": "^1.4.4",
     "detect-browser": "^4.1.0",
-    "exceljs": "^1.7.0",
+    "exceljs": "^1.15.0",
     "hapi": "^18.1.0",
     "hapi-pino": "^5.4.1",
     "html-loader": "^0.5.5",
